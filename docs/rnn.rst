@@ -179,16 +179,16 @@ layer accumulates the output of the first layer, while the first layer
 accumulates the input of the network and the output of the second layer (see
 figure below).
 
-.. digraph:: feedback_rnn
+  .. digraph:: feedback_rnn
 
    node [shape=plaintext,label="(1, 1, 1)"];
    x_1; x_2; x_3;
 
    node [shape=plaintext];
    h1_0 [label="(0, 0, 0)"]; h1_1 [label="(1, 1, 1)"];
-   h1_2 [label="(4, 4, 4)"]; h1_3 [label="(12, 12, 12)"];
+   h1_2 [label="(3, 3, 3)"]; h1_3 [label="(8, 8, 8)"];
    h2_0 [label="(0, 0, 0)"]; h2_1 [label="(1, 1, 1)"];
-   h2_2 [label="(3, 3, 3)"]; h2_3 [label="(8, 8, 8)"];
+   h2_2 [label="(4, 4, 4)"]; h2_3 [label="(12, 12, 12)"];
 
    node [shape=diamond,regular=1,label="+"];
    plus_1_1; plus_1_2; plus_1_3; plus_2_1; plus_2_2; plus_2_3;
@@ -196,7 +196,7 @@ figure below).
    x_1 -> plus_1_1; x_2 -> plus_1_2; x_3 -> plus_1_3;
    h1_0 -> plus_1_1 -> h1_1 -> plus_1_2 -> h1_2 -> plus_1_3 -> h1_3;
    h2_0 -> plus_2_1 -> h2_1 -> plus_2_2 -> h2_2 -> plus_2_3 -> h2_3;
-   h2_0 -> plus_1_1; h2_1 -> plus_1_2; h2_2 -> plus_1_3;
+   h1_1 -> plus_2_1; h1_2 -> plus_2_2; h1_3 -> plus_2_3;
 
    edge [style=invis];
    h2_0 -> h1_0; h2_1 -> h1_1; h2_2 -> h1_2; h2_3 -> h1_3;
